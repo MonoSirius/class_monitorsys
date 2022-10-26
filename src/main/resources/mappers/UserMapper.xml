@@ -1,27 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ustc.sse.student_class_status_monitor_sys.mapper.UserMapper">
-    <update id="update">
-        update user
-        <set>
-            <if test="username != null">
-                username = #{username},
-            </if>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="sex != null">
-                sex = #{sex},
-            </if>
-            <if test="age!= null">
-                age = #{age},
-            </if>
-            <if test="phone != null">
-                phone = #{phone}
-            </if>
-        </set>
-        where uid = #{uid}
-    </update>
+
+    <resultMap id="BaseResultMap" type="ustc.sse.student_class_status_monitor_sys.model.entity.User">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userName" column="userName" jdbcType="VARCHAR"/>
+        <result property="userAccount" column="userAccount" jdbcType="VARCHAR"/>
+        <result property="userAvatar" column="userAvatar" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="TINYINT"/>
+        <result property="userRole" column="userRole" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="userPassword" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,userName,userAccount,
+        userAvatar,gender,userRole,
+        userPassword,email,phone,
+        createTime,updateTime,isDelete
+    </sql>
 </mapper>
