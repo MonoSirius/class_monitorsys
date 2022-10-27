@@ -3,6 +3,9 @@ package ustc.sse.student_class_status_monitor_sys.exception;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ustc.sse.student_class_status_monitor_sys.common.BaseResponse;
+import ustc.sse.student_class_status_monitor_sys.common.ErrorCode;
+import ustc.sse.student_class_status_monitor_sys.common.ResultUtils;
 
 /**
  * student_class_status_monitor_sys

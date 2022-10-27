@@ -1,7 +1,8 @@
 package ustc.sse.student_class_status_monitor_sys.common;
 
-import com.yupi.sqlfather.constant.CommonConstant;
+
 import lombok.Data;
+import ustc.sse.student_class_status_monitor_sys.constant.CommonConstant;
 
 /**
  * 分页请求

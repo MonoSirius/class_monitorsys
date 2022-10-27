@@ -1,5 +1,7 @@
 package ustc.sse.student_class_status_monitor_sys.exception;
 
+import ustc.sse.student_class_status_monitor_sys.common.ErrorCode;
+
 /**
  * student_class_status_monitor_sys
  * <p>
@@ -25,6 +27,7 @@ public class BusinessException extends RuntimeException {
         super(message);
         this.code = errorCode.getCode();
     }
+
 
     public int getCode() {
         return code;

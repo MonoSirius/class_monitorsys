@@ -6,12 +6,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import ustc.sse.student_class_status_monitor_sys.common.ErrorCode;
+import ustc.sse.student_class_status_monitor_sys.exception.BusinessException;
 import ustc.sse.student_class_status_monitor_sys.mapper.UserMapper;
 import ustc.sse.student_class_status_monitor_sys.model.entity.User;
 import ustc.sse.student_class_status_monitor_sys.service.UserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import static ustc.sse.student_class_status_monitor_sys.constant.UserConstant.ADMIN_ROLE;
+import static ustc.sse.student_class_status_monitor_sys.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
  * student_class_status_monitor_sys
@@ -45,7 +50,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (userAccount.length() < 4) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户账号过短");
         }
-        if (userPassword.length() < 8 || checkPassword.length() < 8) {
+        if (userPassword.length() < 6 || checkPassword.length() < 6) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户密码过短");
         }
         // 密码和校验密码相同
