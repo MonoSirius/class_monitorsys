@@ -16,10 +16,14 @@ import ustc.sse.student_class_status_monitor_sys.model.dto.*;
 import ustc.sse.student_class_status_monitor_sys.model.entity.User;
 import ustc.sse.student_class_status_monitor_sys.model.vo.UserVO;
 import ustc.sse.student_class_status_monitor_sys.service.UserService;
+import ustc.sse.student_class_status_monitor_sys.utils.JWTUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -67,7 +71,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/login")
-    public BaseResponse<User> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
+    public BaseResponse<UserVO> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if (userLoginRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -77,7 +81,17 @@ public class UserController {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         User user = userService.userLogin(userAccount, userPassword, request);
-        return ResultUtils.success(user);
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(user, userVO);
+
+        // TODO 在UserVO中加入token
+        Map<String,String > payload = new HashMap<>();
+        payload.put("id",user.getId().toString());
+        payload.put("userAccount",user.getUserAccount());
+        //生成JWT令牌
+        String token = JWTUtils.getToken(payload);
+        userVO.setToken(token);
+        return ResultUtils.success(userVO);
     }
 
     /**
