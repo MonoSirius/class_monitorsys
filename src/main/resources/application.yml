@@ -10,10 +10,15 @@ spring:
       matching-strategy: ant_path_matcher
   # 数据库配置
   datasource:
+    # 数据源类型
+    type: com.zaxxer.hikari.HikariDataSource
+    # 数据库驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接 MySQL8 --> 设置时区
     url: jdbc:mysql://localhost:3306/class_monitor_sys_db?severTimezone=GMT%2b8
     username: root
     password: Cmy,64940310.
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false

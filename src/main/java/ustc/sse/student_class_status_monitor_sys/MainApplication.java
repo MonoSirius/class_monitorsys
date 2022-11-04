@@ -1,5 +1,6 @@
 package ustc.sse.student_class_status_monitor_sys;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

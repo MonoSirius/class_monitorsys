@@ -9,5 +9,4 @@ class StudentClassStatusMonitorSysApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
