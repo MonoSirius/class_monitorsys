@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/class_monitor_sys_db?severTimezone=GMT%2b8
+    username: root
+    password: Cmy,64940310.
+mybatis-plus:
+  configuration:
+    # 生产环境关闭日志
+    log-impl: ''
